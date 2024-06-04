@@ -16,3 +16,5 @@ title: Food in Seattle
 ## Still need to try
 
 * Made In House - Fremont
+* [Wataru Sushi](https://www.exploretock.com/wataru)
+* 

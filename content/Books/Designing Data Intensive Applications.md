@@ -221,3 +221,9 @@ The way queries were performed on these models involved "pointers" that followed
 A relation: A table with a collection of rows
 
 A query optimizer will decide which parts of the query to execute in which order and which indexes to use. This is effectively an "access path" but it is dynamic because it is made automatically by the query optimizer.
+
+## Schema Flexibility in the Document Model
+
+JSON and other Document Models have implicit schemas that are sometimes called *schemaless* but a better term is *schema on read* which is where the schema Is interpreted when the data is read. Relational databases are typically *schema on write* and have an explicit schema and the database ensures the data conforms to the schema 
+
+This is similar to dynamic runtime type checking vs static compile time type checking.

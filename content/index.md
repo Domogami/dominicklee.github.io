@@ -20,8 +20,10 @@ If you are curious, check out some of the topics I have written about below or u
 
 ## 👨‍🍳 Recipes
 
-* [Asian Recipes](Recipes/Asian%20Recipes.md)
 * [Breakfast](Recipes/Breakfast.md)
+* [Asian Recipes](Recipes/Asian%20Recipes.md)
+* [Shin Ramen](Recipes/Shin%20Ramen.md)
+* [Prime Rib](Recipes/Prime%20Rib.md)
 
 ## 📝 Notes on Books I've Read
 
