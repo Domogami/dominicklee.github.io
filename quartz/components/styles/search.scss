@@ -7,8 +7,9 @@
     flex-grow: 0.3;
   }
 
-  & > #search-icon {
+  & > .search-button {
     background-color: var(--truelightgray);
+    border: none;
     border-radius: 4px;
     font-family: inherit;
     font-size: inherit;

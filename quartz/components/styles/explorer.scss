@@ -68,8 +68,11 @@ button#explorer {
   list-style: none;
   overflow: hidden;
   scrollbar-color: var(--tertiary) var(--light);
-  max-height: none;
-  transition: max-height 0.35s ease;
+  overflow-y: auto;
+  max-height: 100%;
+  transition:
+    max-height 0.35s ease,
+    visibility 0s linear 0s;
   margin-top: 0.5rem;
   visibility: visible;
 
