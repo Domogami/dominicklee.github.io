@@ -1,16 +1,56 @@
 ---
-title: Home Network
-tags: ~
+title: Automating Obsidian Publish
 ---
 
-## Basics
+## Script
 
-For a basic upgraded setup with a non-fiber plan, you will need a Modem that plugs into your Coax port, then a router that plugs into the modem. Additionally, you can add a firewall that plugs into the router that can help prevent against IP scanning and block malicious requests.
+To make it easier for me to keep my website up to date with my personal vault, I needed to automate the publish process. Below is a script I can trigger from RayCast in order to quickly update my website with a simple trig\[[]()\]()ger and confirmation key.
 
-## Recommendations
+````bash
+#!/bin/bash
 
-Some of the recommendations I've received from someone who used to do IT Networking and someone who mastered in Networking are as follows:
+# Remove Old Files
+trash /Users/dom/Documents/GitHub/obsidian-site/quartz/content/*
+trash /Users/dom/Documents/GitHub/obsidian-site/quartz/public/*
 
-* Ubiquit unify home network 
-* Dream machine pro
-* Purple Firewalla
+# Export my Obsidian Vault to the GitHub content folder
+/Users/dom/Documents/GitHub/obsidian-site/obsidian-export/target/debug/obsidian-export --frontmatter=always ~/Library/Mobile\ Documents/iCloud~md~obsidian/Documents/Dom\'s\ 2nd\ Brain/ /Users/dom/Documents/GitHub/obsidian-site/quartz/content
+
+# Compile Quartz Site
+cd /Users/dom/Documents/GitHub/obsidian-site/quartz
+npx quartz build
+
+# Save today's date for the commit name
+date=$(date '+%m-%d-%Y')
+
+# Output current changed files
+OUTPUT="$(git status)"
+echo "${OUTPUT}"
+
+# A helper function to ask for confirmation
+asksure() {
+	echo -n "Are you sure (Y/N)? "
+	while read -r -n 1 -s answer; do
+	  if [[ $answer = [YyNn] ]]; then
+	    [[ $answer = [Yy] ]] && retval=0
+	    [[ $answer = [Nn] ]] && retval=1
+	    break
+	  fi
+	done
+	
+	echo # just a final linefeed, optics...
+	
+	return $retval
+}
+
+if asksure; then
+	# Publish!
+	git add .
+	git commit -m "✨ [FEAT] $date Update"
+	git push
+	
+	echo "Published! 🚀"
+else
+	echo "Aborting! ❌"
+fi
+````
